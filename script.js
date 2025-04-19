@@ -200,11 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("exportPdfBtn").addEventListener("click", exportPDF);
   document.getElementById("clearAllBtn").addEventListener("click", clearAll);
 
-  // NEW: book in advance logic
   const bookAdvance = document.getElementById("bookAdvance");
   if (bookAdvance) {
-    bookAdvance.addEventListener("change", (e) => {
-      if (e.target.checked) {
+    bookAdvance.addEventListener("change", () => {
+      if (bookAdvance.checked) {
         const now = new Date();
         const tomorrow = new Date(now.getTime() + 86400000);
         const dayAfter = new Date(now.getTime() + 2 * 86400000);
@@ -214,6 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("dropoffDate").value = format(dayAfter);
         document.getElementById("pickupTime").value = "10:00";
         document.getElementById("dropoffTime").value = "18:00";
+
+        bookAdvance.classList.add("animate-pop");
+        setTimeout(() => bookAdvance.classList.remove("animate-pop"), 400);
       }
     });
   }
