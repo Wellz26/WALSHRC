@@ -1,3 +1,4 @@
+// script.js
 const HOURLY_RATE = 17.5;
 
 const carCatalog = [
@@ -198,4 +199,21 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCars();
   document.getElementById("exportPdfBtn").addEventListener("click", exportPDF);
   document.getElementById("clearAllBtn").addEventListener("click", clearAll);
+
+  document.getElementById("bookAdvance").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      const now = new Date();
+      const tomorrow = new Date(now);
+      const dayAfter = new Date(now);
+      tomorrow.setDate(now.getDate() + 1);
+      dayAfter.setDate(now.getDate() + 2);
+
+      const formatDate = (d) => d.toISOString().split("T")[0];
+
+      document.getElementById("pickupDate").value = formatDate(tomorrow);
+      document.getElementById("dropoffDate").value = formatDate(dayAfter);
+      document.getElementById("pickupTime").value = "10:00";
+      document.getElementById("dropoffTime").value = "18:00";
+    }
+  });
 });
