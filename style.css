@@ -1,11 +1,19 @@
 /* ================================
-   🎯 KTZ Car Rentals – style.css (Upgraded for Daily Hour-Based Rentals)
+   🎯 KTZ Car Rentals – style.css (Full, Mobile-Optimized)
    ================================ */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -14,6 +22,44 @@ body {
   color: #111827;
   min-height: 100vh;
   line-height: 1.6;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="date"],
+input[type="time"],
+select {
+  -webkit-border-radius: 8px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 header {
@@ -23,12 +69,6 @@ header {
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
 }
 
 .form-section {
@@ -55,12 +95,6 @@ select {
   background: white;
   font-size: 0.95rem;
   transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-input[type="date"],
-input[type="time"] {
-  font-size: 0.95rem;
-  color: #111827;
 }
 
 input:focus,
@@ -138,12 +172,14 @@ select:focus {
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
+  min-width: 600px;
 }
 
 thead {
