@@ -1,4 +1,3 @@
-// service-worker.js
 const CACHE_NAME = 'ktz-rentals-cache-v1';
 const OFFLINE_URL = 'offline.html';
 
