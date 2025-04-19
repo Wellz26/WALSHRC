@@ -1,4 +1,3 @@
-// script.js
 const HOURLY_RATE = 17.5;
 
 const carCatalog = [
@@ -103,6 +102,7 @@ function clearAll() {
   });
   document.getElementById("pickupTime").value = "08:00";
   document.getElementById("dropoffTime").value = "18:00";
+  document.getElementById("bookAdvance").checked = false;
 }
 
 function exportPDF() {
@@ -200,20 +200,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("exportPdfBtn").addEventListener("click", exportPDF);
   document.getElementById("clearAllBtn").addEventListener("click", clearAll);
 
-  document.getElementById("bookAdvance").addEventListener("change", (e) => {
-    if (e.target.checked) {
-      const now = new Date();
-      const tomorrow = new Date(now);
-      const dayAfter = new Date(now);
-      tomorrow.setDate(now.getDate() + 1);
-      dayAfter.setDate(now.getDate() + 2);
+  // NEW: book in advance logic
+  const bookAdvance = document.getElementById("bookAdvance");
+  if (bookAdvance) {
+    bookAdvance.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        const now = new Date();
+        const tomorrow = new Date(now.getTime() + 86400000);
+        const dayAfter = new Date(now.getTime() + 2 * 86400000);
 
-      const formatDate = (d) => d.toISOString().split("T")[0];
-
-      document.getElementById("pickupDate").value = formatDate(tomorrow);
-      document.getElementById("dropoffDate").value = formatDate(dayAfter);
-      document.getElementById("pickupTime").value = "10:00";
-      document.getElementById("dropoffTime").value = "18:00";
-    }
-  });
+        const format = d => d.toISOString().split("T")[0];
+        document.getElementById("pickupDate").value = format(tomorrow);
+        document.getElementById("dropoffDate").value = format(dayAfter);
+        document.getElementById("pickupTime").value = "10:00";
+        document.getElementById("dropoffTime").value = "18:00";
+      }
+    });
+  }
 });
