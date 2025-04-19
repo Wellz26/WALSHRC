@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="KTZ Car Rentals — Affordable hourly rides for students. Export your rental summary and book with Walsh balance." />
   <meta name="theme-color" content="#4f46e5" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>KTZ Car Rentals</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="icons/icon.png" type="image/png" />
+  <link rel="manifest" href="manifest.json" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('SW registered', reg))
+          .catch(err => console.error('SW failed', err));
+      });
+    }
+  </script>
 </head>
 <body>
   <!-- HEADER -->
