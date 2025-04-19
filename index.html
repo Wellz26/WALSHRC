@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KTZ Car Rentals — Affordable hourly rides for students. Export your rental summary and book with Walsh balance." />
+  <meta name="theme-color" content="#4f46e5" />
+  <title>KTZ Car Rentals</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icons/icon.png" type="image/png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-wrapper">
+      <svg width="220" height="50" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="60" rx="12" fill="#4f46e5"/>
+        <g transform="translate(10, 10)">
+          <path d="M30 25c0-5 5-10 10-10s10 5 10 10" stroke="#ffffff" stroke-width="2" fill="none" />
+          <circle cx="25" cy="25" r="3" fill="#ffffff"/>
+          <circle cx="55" cy="25" r="3" fill="#ffffff"/>
+          <text x="70" y="30" font-family="Poppins, sans-serif" font-size="20" font-weight="600" fill="#ffffff">
+            KTZ Car Rentals
+          </text>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+    <section class="form-section">
+      <h2>Renter Details</h2>
+      <div class="form-grid">
+        <input type="text" id="renterName" placeholder="Full Name" />
+        <input type="email" id="renterEmail" placeholder="Email Address" />
+        <select id="locationSelect">
+          <option value="">Select Pickup Location</option>
+          <option value="Walsh Main">Walsh Main</option>
+          <option value="Walsh North">Walsh North</option>
+        </select>
+        <select id="paymentMethod">
+          <option value="">Select Payment Method</option>
+          <option value="Walsh Balance">Walsh Balance</option>
+          <option value="Card">Card</option>
+        </select>
+        <label class="checkbox">
+          <input type="checkbox" id="bookAdvance" />
+          Book in Advance?
+        </label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>Rental Duration</h2>
+      <div class="form-grid">
+        <label>
+          Start Date
+          <input type="date" id="pickupDate" />
+        </label>
+        <label>
+          Daily Pickup Time
+          <input type="time" id="pickupTime" value="08:00" />
+        </label>
+        <label>
+          End Date
+          <input type="date" id="dropoffDate" />
+        </label>
+        <label>
+          Daily Drop-off Time
+          <input type="time" id="dropoffTime" value="18:00" />
+        </label>
+      </div>
+    </section>
+
+    <section class="car-selection">
+      <h2>Select Your Ride</h2>
+      <div id="carList" class="car-grid"></div>
+    </section>
+
+    <section class="summary-section">
+      <h2>Rental Summary</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Car</th>
+              <th>Days</th>
+              <th>Hrs/Day</th>
+              <th>Rate</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="summaryTable"></tbody>
+        </table>
+        <p class="total">Total: $<span id="totalCost">0.00</span></p>
+        <div class="actions">
+          <button id="exportPdfBtn" class="btn btn-primary">Export PDF</button>
+          <button id="clearAllBtn" class="btn btn-danger">Clear All</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 KTZ Car Rentals. Built for student drivers.
+  </footer>
+
+  <div id="rentalPrintArea"></div>
+</body>
+</html>
