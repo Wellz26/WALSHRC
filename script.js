@@ -216,6 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bookAdvance.classList.add("animate-pop");
         setTimeout(() => bookAdvance.classList.remove("animate-pop"), 400);
+      } else {
+        document.getElementById("pickupDate").value = "";
+        document.getElementById("dropoffDate").value = "";
+        document.getElementById("pickupTime").value = "08:00";
+        document.getElementById("dropoffTime").value = "18:00";
       }
     });
   }
